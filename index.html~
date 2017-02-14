@@ -20,13 +20,41 @@
     </div>
     <div class="content">
         <div class="post">
-         Soufflé biscuit topping. Dessert chupa chups caramels cheesecake tiramisu cake chocolate cake. Bear claw candy cake lemon drops muffin candy chocolate cake. Marzipan soufflé gingerbread. Toffee candy canes dragée brownie gummi bears oat cake caramels chocolate cake fruitcake. Icing biscuit chupa chups powder soufflé croissant cotton candy wafer. Chocolate cake sweet roll bonbon pastry bonbon cake dessert tart caramels.
+            <div class="text">Soufflé biscuit topping. Dessert chupa chups caramels cheesecake tiramisu cake chocolate cake. Bear claw candy cake lemon drops muffin candy chocolate cake. Marzipan soufflé gingerbread. Toffee candy canes dragée brownie gummi bears oat cake caramels chocolate cake fruitcake. Icing biscuit chupa chups powder soufflé croissant cotton candy wafer. Chocolate cake sweet roll bonbon pastry bonbon cake dessert tart caramels.</div>
+         <form action="">
+            <input type="button" class="button" name="comment" value="Comment">
+         </form>
         </div>
         <div class="post">
-        NEEDS TO BE FILLED WITH STUFF
+            <img  src=""/>
+
+            <div class="text">NEEDS TO BE FILLED WITH STUFF</div>
         </div>
+        <div class="post event">
+            <img  src=""/>          
+            NEEDS TO BE FILLED WITH STUFF         
+        </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+        <div class="post event">             <img  src=""/>             NEEDS TO BE FILLED WITH STUFF         </div>
+
         <div class="post">
-        NEEDS TO BE FILLED WITH STUFF
+            <div class="post-text">NEEDS TO BE FILLED WITH STUFF</div>
         </div>
         <div class="post">
         NEEDS TO BE FILLED WITH STUFF
