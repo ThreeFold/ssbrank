@@ -1,8 +1,18 @@
 <?php
-    include('header.php');
-
-    ?>
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path .= "/ssbrank/header.php";
+	include_once($path);
+?>
+	
     <div class="content">
+    <div id="top-nav">
+	<ul class="nav">
+		<li><a href="index.php">Group Posts</a></li>
+		<li><a href="groups.php">Your Groups</a></li>
+		<li><a href="groupFinder.php">Find Groups</a></li>
+	</ul>
+	</div>
+	<p class="clear"></p>
     <?php
     //NOTE: possible to transport this in ajax
     
@@ -22,7 +32,7 @@
             "Poster-ID" => "",
             "poster-name" => "Nick",
             "group-id" => "",
-            "event-image" => "/ssbrank/rsc/Event.png",
+            "event-image" => "",
             "group-name" => "test",
             "text" => "Soufflé biscuit topping. Dessert chupa chups caramels cheesecake tiramisu cake chocolate cake. Bear claw candy cake lemon drops muffin candy chocolate cake. Marzipan soufflé gingerbread. Toffee candy canes dragée brownie gummi bears oat cake caramels chocolate cake fruitcake. Icing biscuit chupa chups powder soufflé croissant cotton candy wafer. Chocolate cake sweet roll bonbon pastry bonbon cake dessert tart caramels."
             ),
@@ -49,6 +59,10 @@
     }
     ?>
     </div>
+
 <?php
-include('footer.php');
+
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	$path .= "/ssbrank/footer.php";
+	include_once($path);
 ?>

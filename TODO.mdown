@@ -12,6 +12,7 @@ TODO:
 			- [ ] Admin Pages
 			- [ ] List of Communities
 			- [ ] Group Page
+			- [x] All Group Posts
 		- [ ] Tourneys
 			- [ ] Event Page
 			- [ ] Upcoming Tournaments
