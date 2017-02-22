@@ -18,6 +18,6 @@
             <li><a href="/index.php">Home</a></li>
             <li><a href="/groups/">Community</a></li>
             <li><a href="/ranking.php">Ranks</a></li>
-            <li><a href="/tourneys.php">Tourneys</a></li>
+            <li><a href="/tourney/">Tourneys</a></li>
         </ul>
     </div>
