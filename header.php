@@ -10,7 +10,7 @@
     <div id="main-nav">
         <div id="user-block">
             <div class="user-image">
-                <img src="/ssbrank/rsc/icon-user.png" />
+                <img src="/rsc/icon-user.png" />
             </div>
             <h1 id="username">{Username}</h1>
         </div>
