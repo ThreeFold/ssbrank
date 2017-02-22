@@ -3,7 +3,7 @@
 
 <head>
 <title> Smash Rank</title>
-    <link href="/ssbrank/rsc/master.css" rel="stylesheet">
+    <link href="/rsc/master.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,9 +15,9 @@
             <h1 id="username">{Username}</h1>
         </div>
         <ul id="navbar">
-            <li><a href="/ssbrank/index.php">Home</a></li>
-            <li><a href="/ssbrank/groups/">Community</a></li>
-            <li><a href="/ssbrank/ranking.php">Ranks</a></li>
-            <li><a href="/ssbrank/tourneys.php">Tourneys</a></li>
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/groups/">Community</a></li>
+            <li><a href="/ranking.php">Ranks</a></li>
+            <li><a href="/tourneys.php">Tourneys</a></li>
         </ul>
     </div>
