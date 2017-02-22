@@ -1,18 +1,10 @@
 <?php
 	$path = $_SERVER['DOCUMENT_ROOT'];
-	$path .= "/ssbrank/header.php";
+	$path .= "/header.php";
 	include_once($path);
 ?>
 	
-    <div class="content">
-    <div id="top-nav">
-	<ul class="nav">
-		<li><a href="index.php">Group Posts</a></li>
-		<li><a href="groups.php">Your Groups</a></li>
-		<li><a href="groupFinder.php">Find Groups</a></li>
-	</ul>
-	</div>
-	<p class="clear"></p>
+    
     <?php
     //NOTE: possible to transport this in ajax
     
@@ -63,6 +55,6 @@
 <?php
 
 	$path = $_SERVER['DOCUMENT_ROOT'];
-	$path .= "/ssbrank/footer.php";
+	$path .= "/footer.php";
 	include_once($path);
 ?>

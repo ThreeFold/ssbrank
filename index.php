@@ -22,7 +22,7 @@
             "Poster-ID" => "",
             "poster-name" => "Nick",
             "group-id" => "",
-            "event-image" => "/ssbrank/rsc/Event.png",
+            "event-image" => "/rsc/Event.png",
             "group-name" => "test",
             "text" => "Soufflé biscuit topping. Dessert chupa chups caramels cheesecake tiramisu cake chocolate cake. Bear claw candy cake lemon drops muffin candy chocolate cake. Marzipan soufflé gingerbread. Toffee candy canes dragée brownie gummi bears oat cake caramels chocolate cake fruitcake. Icing biscuit chupa chups powder soufflé croissant cotton candy wafer. Chocolate cake sweet roll bonbon pastry bonbon cake dessert tart caramels."
             ),
