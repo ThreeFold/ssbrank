@@ -4,6 +4,7 @@
 <head>
 <title> Smash Rank</title>
     <link href="/rsc/master.css" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 </head>
 
 <body>
