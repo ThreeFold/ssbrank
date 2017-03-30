@@ -14,7 +14,7 @@
 	<?php
 		if(isset($_GET['error']))
 		{
-			echo '<div class="error">Error: <br/>' . $_GET['error'] . '</div>';
+			echo '<div class="error">Error: <br/>' . filter_var($_GET['error'],FILTER_SANITIZE_SPECIAL_CHARS) . '</div>';
 
 		}
 	?>
