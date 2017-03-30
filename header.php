@@ -14,8 +14,8 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     } 
-
-    $db = new PDO("mysql:host=127.0.0.1;dbname=ssbrank;charset=utf8", "root", '');
+    include_once('PDOFactory.php');
+    $db = PDOFactory::getConnection();
     $stmt = $db->prepare('SELECT * from user where id = ?');
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
