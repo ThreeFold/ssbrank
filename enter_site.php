@@ -1,5 +1,7 @@
 <?php
-    $db = new PDO("mysql:host=127.0.0.1;dbname=ssbrank;charset=utf8", "root", '');
+
+	include_once('PDOFactory.php');
+    $db = PDOFactory::getConnection();
     $stmt = $db->prepare('SELECT * from user where name = ? or email = ?');
     $stmt->execute([$_POST['email'],$_POST['email']]);
     $user = $stmt->fetch();

@@ -1,5 +1,5 @@
 <?php
-
+include_once('PDOFactory.php');
 session_start();
 $email = $_POST['email'];
 $username = $_POST['username'];
@@ -24,7 +24,7 @@ if($email === "" or $username === "" or $password === "" or $check === ""){
 if($password !== $check){
 	header('Location: register.php?error=Passwords don\'t match');
 }
-$db = new PDO('mysql:host=localhost;dbname=ssbrank;charset=utf8mb4', 'root', '');
+$db = PDOFactory::getConnection();
 
 $stmt = $db->prepare('INSERT INTO user (id, name,  location, password, email, role, melee, n64, sm4sh, brawl, roa, pm)
 	VALUES (:id, :username, :location, :password, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm)');

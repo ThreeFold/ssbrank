@@ -3,12 +3,14 @@
 	$path .= "/header.php";
 	include_once($path);
 	include_once("groupHeader.php");
+    include_once("PDOFactory.php");
 ?>
 	
     
     <?php
     $db = new PDO("mysql:host=127.0.0.1;dbname=ssbrank;charset=utf8", "root", '');
-    $stmt = $db->prepare('SELECT * from user where id = ?');
+    $db = new PDOFactory();
+    $stmt = $db->prepare('SELECT * from posts where id = ?');
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
     if(empty($user)){
