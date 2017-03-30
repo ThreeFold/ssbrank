@@ -1,11 +1,11 @@
 <?php
 include_once('PDOFactory.php');
 session_start();
-$email = $_POST['email'];
-$username = $_POST['username'];
-$password = $_POST['password'];
-$check = $_POST['password-check'];
-$location = $_POST['location'];
+$email = clean($_POST['email']);
+$username = clean($_POST['username']);
+$password = clean($_POST['password']);
+$check = clean($_POST['password-check']);
+$location = clean($_POST['location']);
 $n64 = checkCheckbox('n64');
 $ssbm = checkCheckbox('melee');
 $ssbb = checkCheckbox('ssbb');
@@ -46,6 +46,12 @@ $stmt->execute();
 mkdir('/users/'.$user_id.'/', 0777, true);
 $_SESSION['user_id'] = $user_id;
 header('Location: index.php');
+function clean($input){
+	$input = trim($input);
+	$input = stripslashes($input);
+	$input = htmlspecialchars($input);
+	return $input;
+}
 function checkCheckbox($val){
 	if(isset($_POST[$val])){
 		return $_POST[$val] === "TRUE";
