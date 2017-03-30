@@ -7,6 +7,13 @@
 	
     
     <?php
+    $db = new PDO("mysql:host=127.0.0.1;dbname=ssbrank;charset=utf8", "root", '');
+    $stmt = $db->prepare('SELECT * from user where id = ?');
+    $stmt->execute([$_SESSION['user_id']]);
+    $user = $stmt->fetch();
+    if(empty($user)){
+        header('Location:landing.php');
+    }
     //NOTE: possible to transport this in ajax
     
     $posts = array(

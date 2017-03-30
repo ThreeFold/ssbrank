@@ -33,7 +33,7 @@ hr {
     top: 0;
     left: 0;
     color: white;
-    background-color: #050401;
+    background-color: #111;
     overflow: hidden;
 }
 
@@ -42,6 +42,8 @@ hr {
     height: 100px;
     overflow: hidden;
     padding: 0;
+    float:left;
+    margin:15px;
 }
 
 #main-nav {

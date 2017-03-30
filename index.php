@@ -4,12 +4,13 @@
     ?>
     <div class="content">
     <?php
+    if($_SESSION['user_id'] == ''){
+        header('Location: landing.php');
+    }
     //NOTE: possible to transport this in ajax
-    
     $posts = array(
         0 => array(
             "type" => 1,
-            "poster-image" => "",
             "Poster-ID" => "",
             "poster-name" => "Nick",
             "group-id" => "",

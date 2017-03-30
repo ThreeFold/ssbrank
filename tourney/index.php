@@ -2,7 +2,7 @@
 $path = $_SERVER['DOCUMENT_ROOT'];
 $path .= "/header.php";
 include_once($path);
-include_once("tourneyHeader.php");
+#include_once("tourneyHeader.php");
 ?>
 
 <div id="content">
