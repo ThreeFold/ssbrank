@@ -16,9 +16,6 @@
 	}
 
 	$groups = PDOFactory::getGroups($pageNum);
-	echo '<pre style="color:white">';
-	echo print_r($groups,true);
-	echo '</pre>';
 	foreach($groups as $group){
 		echo '<a class="group-card" href="/groups/group.php?name=' . $group['name'] . '">';
 		echo '<img class="group-img" src="/rsc/group-photo.png"/>';
