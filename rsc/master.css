@@ -6,7 +6,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: sans-serif;
-    background-color:#f9f9f9;
+    background-color:#111;
 }
 
 a {
@@ -99,6 +99,7 @@ hr {
 }
 .nav > li >  a{
     padding:8px 10px;
+    color:white;
 }
 .nav > li >  a:hover {
     background-color:#050401;

@@ -5,24 +5,26 @@
 	include_once("groupHeader.php")
 ?>
 <div class="group-filter">
-<form action="">
-<input type="text" name="group-name">
-</form>
+	<form action="">
+	<input type="text" name="group-name">
+	</form>
 </div>
-<a class="group-card" href="/groups/group.php"><!-- Needs to have query string for group lookkup -->
-<img class="group-img" src="/rsc/group-photo.png"/>
-<h1>My Group Name</h1>
-	</a>
-<a class="group-card" href="/groups/group.php"><!-- Needs to have query string for group lookkup -->
-<img class="group-img" src="/rsc/group-photo.png"/>
-<h1>My Group Name</h1>
-	</a><a class="group-card" href="/groups/group.php"><!-- Needs to have query string for group lookkup -->
-<img class="group-img" src="/rsc/group-photo.png"/>
-<h1>My Group Name</h1>
-	</a><a class="group-card" href="/groups/group.php"><!-- Needs to have query string for group lookkup -->
-<img class="group-img" src="/rsc/group-photo.png"/>
-<h1>My Group Name</h1>
-	</a>
+<?php
+	$pageNum = 1;
+	if(isset($_GET['page'])){
+		$pageNum = $_GET['page'];
+	}
+
+	$groups = PDOFactory::getGroups($pageNum);
+	echo '<pre style="color:white">';
+	echo print_r($groups,true);
+	echo '</pre>';
+	foreach($groups as $group){
+		echo '<a class="group-card" href="/groups/group.php?name=' . $group['name'] . '">';
+		echo '<img class="group-img" src="/rsc/group-photo.png"/>';
+		echo '<h1>'. $group['name'] .'</h1></a>';
+	}
+?>
 </div>
 <?php
 

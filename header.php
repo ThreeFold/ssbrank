@@ -10,12 +10,13 @@
     <div id="main-nav">
         <div id="user-block">
 <?php 
-
+    
+    include_once('PDOFactory.php');
+    include_once('library.php');
+    
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     } 
-    include_once('PDOFactory.php');
-    include_once('library.php');
     $db = PDOFactory::getConnection();
     $stmt = $db->prepare('SELECT * from user where id = ?');
     $stmt->execute([$_SESSION['user_id']]);
