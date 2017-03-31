@@ -18,6 +18,10 @@ hr {
     margin:0;
     padding:0;
 }
+#username > .role {
+    color:#666;
+    font-size:8pt;
+}
 .footer {
     position:fixed;
     bottom:0;

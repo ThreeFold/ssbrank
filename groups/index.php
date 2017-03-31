@@ -8,7 +8,6 @@
 	
     
     <?php
-    $db = new PDO("mysql:host=127.0.0.1;dbname=ssbrank;charset=utf8", "root", '');
     $db = new PDOFactory();
     $stmt = $db->prepare('SELECT * from posts where id = ?');
     $stmt->execute([$_SESSION['user_id']]);
@@ -59,7 +58,20 @@
             <a href="" class="button comment">Comment</a>
         </div>';
     }
+    function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
+        $url = 'https://www.gravatar.com/avatar/';
+        $url .= md5( strtolower( trim( $email ) ) );
+        $url .= "?s=$s&d=$d&r=$r";
+        if ( $img ) {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+                $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        return $url;
+    }
     ?>
+
     </div>
 
 <?php

@@ -15,6 +15,7 @@
         session_start();
     } 
     include_once('PDOFactory.php');
+    include_once('library.php');
     $db = PDOFactory::getConnection();
     $stmt = $db->prepare('SELECT * from user where id = ?');
     $stmt->execute([$_SESSION['user_id']]);
@@ -25,9 +26,9 @@
 
 ?>
             <div class="user-image">
-                <img src="/users/<?php echo $user['id']; ?>/profile-image_100.png" />
+                <img src="<?php echo get_gravatar($user['email'],100); ?>" />
             </div>
-            <p id="username"><?php echo $user['name'] ?></p>
+            <p id="username"><?php echo $user['name'] ?> <span class="role"><?php echo get_role($user['role']);?></span></p>
         </div>
         <ul id="navbar">
             <li><a href="/index.php">Home</a></li>

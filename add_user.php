@@ -50,6 +50,9 @@ function clean($input){
 	$input = trim($input);
 	$input = stripslashes($input);
 	$input = htmlspecialchars($input);
+	if($input === ""){
+		header('Location: register.php?error=Empty Fields');
+	}
 	return $input;
 }
 function checkCheckbox($val){
