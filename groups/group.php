@@ -13,7 +13,7 @@
     $info = $stmt->fetch();
     $users = get_users($_GET['name']);
     echo '<div id="group-desc">';
-    echo '<h3>' . $info['name'] . '</h3>';
+    echo '<h2>' . $info['name'] . '</h2>';
     echo '<div class="header" style="background-image:url(' . $info['header_image'] . ')"></div>';
     echo '<p>' . $info['description'] . '</p>';
     echo '<h4>Members</h4>';

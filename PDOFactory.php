@@ -36,7 +36,7 @@ class PDOFactory{
 	}
 	public static function getUserGroups($user_id){
 		$db = PDOFactory::getConnection();
-		$stmt = $db->prepare('SELECT b.name FROM community_user_list a LEFT JOIN community b  on a.community_id = b.id WHERE a.user_id = ?');
+		$stmt = $db->prepare('SELECT b.name, b.header_image FROM community_user_list a LEFT JOIN community b  on a.community_id = b.id WHERE a.user_id = ?');
 		$stmt->execute([$user_id]);
 		return $stmt->fetchAll();
 	}
