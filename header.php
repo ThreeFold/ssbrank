@@ -4,7 +4,8 @@
 <head>
 <title>Smash Rank</title>
     <link href="/rsc/master.css" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <div id="main-nav">
@@ -22,7 +23,7 @@
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
     if(empty($user)){
-        header('Location:landing.php');
+        header('Location:/landing.php');
     }
 
 ?>

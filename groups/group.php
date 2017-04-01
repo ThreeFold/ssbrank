@@ -13,16 +13,19 @@
     $info = $stmt->fetch();
     $users = get_users($_GET['name']);
     echo '<div id="group-desc">';
-    echo '<h2>' . $info['name'] . '</h2>';
+    echo '<h2>' . $info['name'] . '<span><input type="button" id="join-button" onClick="join()" value="Join Group"></h2>';
     echo '<div class="header" style="background-image:url(' . $info['header_image'] . ')"></div>';
     echo '<p>' . $info['description'] . '</p>';
     echo '<h4>Members</h4>';
     echo '<div class="user-images">';
-    foreach($users as $user){
-        $img = get_gravatar($user['email'], 30);
-        echo '<a href="/users/user.php?name=' . $user['name'] . '">'; 
-        echo '<img src="' . $img . '">';
-        echo '</a>';
+    echo '<pre>'. print_r($users,true) . '</pre>';
+    if(!empty($users)){
+        foreach($users as $u){
+            $img = get_gravatar($u['email'], 30);
+            echo '<a href="/users/user.php?name=' . $u['name'] . '">'; 
+            echo '<img src="' . $img . '">';
+            echo '</a>';
+        }
     }
     echo '</div>';
     echo '</div>';
@@ -38,5 +41,34 @@
 
 	$path = $_SERVER['DOCUMENT_ROOT'];
 	$path .= "/footer.php";
+?>
+<script>
+    function join(){
+        $('#join-button').disabled = true;
+        console.log('Disabled button');
+        var saveData = $.ajax({
+            type:'POST',
+            url: 'joinGroup.php',
+            data: {
+                user_name: '<?php echo $_SESSION['user_id']; ?>',
+                group_name: '<?php echo $info['name']; ?>'
+            },
+            dataType: 'Text',
+            success: function(response){
+                $('#group-desc').append(response);
+                $('#join-button').attr('value','JOINED!');
+            },
+            error: function(){
+                alert('ERROR JOINING');
+                $('#join-button').disabled = false;
+
+            }
+        });
+    }
+    $(document).ajaxStop(function() {
+      console.log('call ended');
+    });
+</script>
+<?php
 	include_once($path);
 ?>

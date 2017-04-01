@@ -1,5 +1,6 @@
 <?php
 include_once('PDOFactory.php');
+include_once('library.php');
 session_start();
 $email = clean($_POST['email']);
 $username = clean($_POST['username']);
@@ -46,18 +47,3 @@ $stmt->execute();
 mkdir('/users/'.$user_id.'/', 0777, true);
 $_SESSION['user_id'] = $user_id;
 header('Location: index.php');
-function clean($input){
-	$input = trim($input);
-	$input = stripslashes($input);
-	$input = htmlspecialchars($input);
-	if($input === ""){
-		header('Location: register.php?error=Empty Fields');
-	}
-	return $input;
-}
-function checkCheckbox($val){
-	if(isset($_POST[$val])){
-		return $_POST[$val] === "TRUE";
-	}
-	return false;
-}
