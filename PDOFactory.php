@@ -9,14 +9,22 @@ class PDOFactory{
 		return new PDO('mysql:host='. $url .';dbname=heroku_b2ca4438ee10c17;charset=utf8',$user,$password);
 	}
 	public static function getPosts(){
-
-    $db = PDOFactory::getConnection();
-    $stmt = $db->prepare('SELECT b.name as group_name, posts.community_id, posts.user_id, posts.`text`,posts.type, user.`name`, user.email FROM community_user_list a 
-        LEFT JOIN community b ON a.community_id = b.id 
-        LEFT JOIN posts ON a.community_id = posts.community_id
-        LEFT JOIN user ON posts.user_id = user.id WHERE a.user_id = ? ORDER BY posts.`date-posted` DESC; ');
-    $stmt->execute([$_SESSION['user_id']]);
-    return $stmt->fetchAll();
+	    $db = PDOFactory::getConnection();
+	    $stmt = $db->prepare('SELECT b.name as group_name, posts.community_id, posts.user_id, posts.`text`,posts.type, user.`name`, user.email FROM community_user_list a 
+	        LEFT JOIN community b ON a.community_id = b.id 
+	        LEFT JOIN posts ON a.community_id = posts.community_id
+	        LEFT JOIN user ON posts.user_id = user.id WHERE a.user_id = ? ORDER BY posts.`date-posted` DESC; ');
+	    $stmt->execute([$_SESSION['user_id']]);
+	    return $stmt->fetchAll();
+	}
+	public static function getGroupPosts($group_name){
+	    $db = PDOFactory::getConnection();
+	    $stmt = $db->prepare('SELECT b.name as group_name, posts.community_id, posts.user_id, posts.`text`,posts.type, user.`name`, user.email FROM community_user_list a 
+	        LEFT JOIN community b ON a.community_id = b.id 
+	        LEFT JOIN posts ON a.community_id = posts.community_id
+	        LEFT JOIN user ON posts.user_id = user.id WHERE b.name = ? ORDER BY posts.`date-posted` DESC; ');
+	    $stmt->execute([$group_name]);
+	    return $stmt->fetchAll();
 	}
 	public static function getGroups($page){
 		$db = PDOFactory::GetConnection();

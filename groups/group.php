@@ -7,56 +7,30 @@
 	
     
     <?php
-    $db = new PDO("mysql:host=127.0.0.1;dbname=ssbrank;charset=utf8", "root", '');
+    $db = PDOFactory::getConnection();
     $stmt = $db->prepare('SELECT * from community where name = ?');
     $stmt->execute([$_GET['name']]);
-    $stmt = $db->prepare('SELECT * from posts where community_id = ?');
-    $stmt->execute([$_GET['community_id']]);
-    $posts = $stmt->fetchAll();
-    //NOTE: possible to transport this in ajax
-    /*
-    $posts = array(
-        0 => array(
-            "type" => 1,
-            "poster-image" => "",
-            "Poster-ID" => "",
-            "poster-name" => "Nick",
-            "group-id" => "",
-            "group-name" => "test",
-            "text" => "Soufflé biscuit topping. Dessert chupa chups caramels cheesecake tiramisu cake chocolate cake. Bear claw candy cake lemon drops muffin candy chocolate cake. Marzipan soufflé gingerbread. Toffee candy canes dragée brownie gummi bears oat cake caramels chocolate cake fruitcake. Icing biscuit chupa chups powder soufflé croissant cotton candy wafer. Chocolate cake sweet roll bonbon pastry bonbon cake dessert tart caramels."
-            ),
-        1 => array(
-            "type" => 2,
-            "poster-image" => "",
-            "Poster-ID" => "",
-            "poster-name" => "Nick",
-            "group-id" => "",
-            "event-image" => "",
-            "group-name" => "test",
-            "text" => "Soufflé biscuit topping. Dessert chupa chups caramels cheesecake tiramisu cake chocolate cake. Bear claw candy cake lemon drops muffin candy chocolate cake. Marzipan soufflé gingerbread. Toffee candy canes dragée brownie gummi bears oat cake caramels chocolate cake fruitcake. Icing biscuit chupa chups powder soufflé croissant cotton candy wafer. Chocolate cake sweet roll bonbon pastry bonbon cake dessert tart caramels."
-            ),
-        );
-        */
-    #NOTE: takes in a list of posts and generates posts for them, can be used later in a function if need be
-    #could also rewrite in js and just pass the above information back from an ajax request
-    foreach($posts as $post){
-        echo '<div class="post ';
-        if ($post["type"] == 2)
-            echo 'event-post';
-        echo '">
-            <div class="poster-info">
-                <img class="poster-image" src="'. $post["poster-image"] .'" />
-                <a href="#" class="post-location">'. $post["group-name"] .'</a>
-                <a href="#" class="poster-name">'. $post["poster-name"] .'</a>
-            </div>
-            <div class="clear"></div>';
-        if ($post["type"] == 2)
-            echo '<img src="'.$post["event-image"].'" class="event-image" />';
-        echo '<div class="text">' . $post["text"] . '</div>
-            <hr/>
-            <a href="" class="button comment">Comment</a>
-        </div>';
+    $info = $stmt->fetch();
+    $users = get_users($_GET['name']);
+    echo '<div id="group-desc">';
+    echo '<h3>' . $info['name'] . '</h3>';
+    echo '<div class="header" style="background-image:url(' . $info['header_image'] . ')"></div>';
+    echo '<p>' . $info['description'] . '</p>';
+    echo '<h4>Members</h4>';
+    echo '<div class="user-images">';
+    foreach($users as $user){
+        $img = get_gravatar($user['email'], 30);
+        echo '<a href="/users/user.php?name=' . $user['name'] . '">'; 
+        echo '<img src="' . $img . '">';
+        echo '</a>';
     }
+    echo '</div>';
+    echo '</div>';
+    ?>
+
+    <?php
+    $posts = PDOFactory::getGroupPosts($_GET['name']);
+    echo formatPosts($posts);
     ?>
     </div>
 
