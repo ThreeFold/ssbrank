@@ -18,7 +18,8 @@
 		<input class="text-input" type="text" name="email" required="TRUE" placeholder="Email" />
 		<input class="text-input" type="text" name="username" required="TRUE" placeholder="Username/Tag" />
 		<input class="text-input" type="text" name="location" placeholder="Location" />
-		<input class="text-input" type="password" name="password" required="TRUE" placeholder="Password" />
+		<label for="password">8 characters or longer</label>
+		<input class="text-input" id="password" type="password" name="password" required="TRUE" placeholder="Password" />
 		<input class="text-input" type="password" name="password-check" required="TRUE" placeholder="Password Again" />
 		<h3>Games:</h3>
 		<input type="checkbox" id="n64" name="n64" value="TRUE"/><label for="n64">Smash 64</label><br/>

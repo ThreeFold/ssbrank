@@ -19,19 +19,21 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     } 
-    $db = PDOFactory::getConnection();
-    $stmt = $db->prepare('SELECT * from user where id = ?');
-    $stmt->execute([$_SESSION['user_id']]);
-    $user = $stmt->fetch();
-    if(empty($user)){
+    $user = User::onlyID($_SESSION['user_id']);
+    if(empty((array)$user)){
         header('Location:/landing.php');
     }
 
 ?>
-            <div class="user-image">
-                <img src="<?php echo get_gravatar($user['email'],100); ?>" />
-            </div>
-            <p id="username"><?php echo $user['name'] ?> <span class="role"><?php echo get_role($user['role']);?></span></p>
+        <div class="user-image">
+            <a href="<?php echo $user->getProfileLink() ?>"><img src="<?php echo $user->getProfileImage(100); ?>" /></a>
+        </div>
+        <?php
+        echo    '<p id="username">
+                    <a href="' . $user->getProfileLink() . '">' . $user->getName() . 
+                    '</a><span class="role">' . get_role($user->getRole()) . '</span></p>';
+        ?>
+        <a class="settings-icon" href="/users/settings.php"><img src="/rsc/images/gear.png"></a>
         </div>
         <ul id="navbar">
             <li><a href="/index.php">Home</a></li>

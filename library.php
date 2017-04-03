@@ -77,7 +77,7 @@ function clean($input){
 	$input = stripslashes($input);
 	$input = htmlspecialchars($input);
 	if($input === ""){
-		header('Location: register.php?error=Empty Fields');
+		header('Location: /register.php?error=Empty Fields');
 	}
 	return $input;
 }

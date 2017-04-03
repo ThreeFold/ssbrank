@@ -2,6 +2,7 @@
 include_once('PDOFactory.php');
 include_once('library.php');
 session_start();
+
 $email = clean($_POST['email']);
 $username = clean($_POST['username']);
 $password = clean($_POST['password']);
@@ -24,6 +25,9 @@ if($email === "" or $username === "" or $password === "" or $check === ""){
 }
 if($password !== $check){
 	header('Location: register.php?error=Passwords don\'t match');
+}
+if(strlen($password) >= 8){
+	header('location: register.php?error=Password is not long enough');
 }
 $db = PDOFactory::getConnection();
 

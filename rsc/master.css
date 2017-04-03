@@ -18,7 +18,10 @@ hr {
     margin:0;
     padding:0;
 }
-#username > .role {
+#username a {
+    color:white;
+}
+#username  .role {
     color:#666;
     font-size:8pt;
 }
@@ -49,7 +52,11 @@ hr {
     float:left;
     margin:15px;
 }
-
+.settings-icon {
+    position:absolute;
+    right: 10px;
+    bottom:15px;
+}
 #main-nav {
     background-color: #050401;
 }
@@ -239,6 +246,9 @@ hr {
 }
 textarea.post-text {
     font-family:sans-serif;
-    width:100%;
+    width:inherit;
     border:none;
+    width:100%;
+    box-sizing: border-box;
+    resize: vertical;
 }

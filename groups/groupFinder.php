@@ -5,6 +5,7 @@
 	include_once("groupHeader.php")
 ?>
 <div class="group-filter">
+	<a href="createGroup.php" class="button">Make Group</a>
 	<form action="">
 	<input type="text" name="group-name">
 	</form>
@@ -18,7 +19,7 @@
 	$groups = PDOFactory::getGroups($pageNum);
 	foreach($groups as $group){
 		echo '<a class="group-card" href="/groups/group.php?name=' . $group['name'] . '">';
-		echo '<img class="group-img" src="/rsc/group-photo.png"/>';
+		echo '<div class="group-img" style="background-image:url(' . $group['header_image'] . '"></div>';
 		echo '<h1>'. $group['name'] .'</h1></a>';
 	}
 ?>
