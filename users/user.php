@@ -1,14 +1,19 @@
 <?php
-class User{
-	private $id = '';
-	private $name = '';
-	private $location = '';
+    ob_start();
+	$path = $_SERVER['DOCUMENT_ROOT'];
+	include_once($path . '/header.php');
+	include_once($path . '/PDOFactory.php');
+	include_once($path . '/library.php');
 
+    $buffer=ob_get_contents();
+    ob_end_clean();
 
-	public function __construct($id, $name, $location){
-		$this->id = $id;
-		$this->name = $name;
-		$this->location = $location;
-	}
+    $title = clean($_GET['name']) . ' | SSBRank';
+    $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 
-}
+    echo $buffer;
+
+?>
+
+<?
+include_once($path . '/footer.php');

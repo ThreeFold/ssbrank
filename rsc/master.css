@@ -137,26 +137,31 @@ hr {
 .post > .poster-info {
   clear:both;
 }
-.poster-info > a {
+.poster-info  a {
   display:block;
   color:#800e13;
 }
-.poster-info > a:hover {
+.poster-info  a:hover {
   text-decoration:underline;
 }
 .poster-info > .poster-image{
-  width:70px;
-  height:70px;
+  width:40px;
+  height:40px;
   float:left;
   margin:4px;
 }
-.poster-info > .poster-name {
-  font-size:14pt;
+.names {
+    padding-top:15px;
 }
-.poster-info > .post-location{
+.poster-info  .poster-name {
+  font-size:14pt;
+  display:inline-block;
+}
+.poster-info  .post-location{
   color:grey;
   font-size:10pt;
   padding-top:10px;
+  display:inline-block;
 }
 .post > .text {
     padding: 5px 10px;
@@ -197,9 +202,43 @@ hr {
    margin:5px;
 }
 .group-card  .group-img{
+
+    background-position:center center;
+    background-repeat:no-repeat;
     width:100%;
     height:300px;
+    background-size:cover;
 }
 .group-card:hover {
     transform: scale(1.01);
+}
+#join-button{
+    width:100px;
+    height:40px;
+    background-color:#27FB6B;
+    color:#111111;
+    border:none;
+    margin-bottom:5px;
+}
+#join-button:hover{
+    background-color:#058C42;
+    cursor:pointer;
+}
+#join-button:disabled, #join-button.leave{
+    background-color:#bbb;
+}
+#join-button.leave {
+    background-color:#DB162F;
+    cursor:pointer;
+}
+#post-box{
+    background-color: white;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 0px 1px #050401;
+}
+textarea.post-text {
+    font-family:sans-serif;
+    width:100%;
+    border:none;
 }

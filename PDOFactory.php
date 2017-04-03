@@ -19,9 +19,9 @@ class PDOFactory{
 	}
 	public static function getGroupPosts($group_name){
 	    $db = PDOFactory::getConnection();
-	    $stmt = $db->prepare('SELECT b.name as group_name, posts.community_id, posts.user_id, posts.`text`,posts.type, user.`name`, user.email FROM community_user_list a 
-	        LEFT JOIN community b ON a.community_id = b.id 
-	        LEFT JOIN posts ON a.community_id = posts.community_id
+	    $stmt = $db->prepare('SELECT b.name as group_name, posts.community_id, posts.user_id, posts.`text`,posts.type, user.`name`, user.email 
+	        FROM community b 
+	        LEFT JOIN posts ON b.id = posts.community_id
 	        LEFT JOIN user ON posts.user_id = user.id WHERE b.name = ? ORDER BY posts.`date-posted` DESC; ');
 	    $stmt->execute([$group_name]);
 	    return $stmt->fetchAll();

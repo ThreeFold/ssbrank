@@ -12,6 +12,15 @@ function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts
     }
     return $url;
 }
+
+function get_gravatar_from_id($id){
+    $db = PDOFactory::getConnection();
+    $stmt = $db->prepare('SELECT * FROM user where id = ?');
+    $stmt->execute([$id]);
+    $email = $stmt->fetch()['email'];
+    echo $stmt->fetch();
+    return get_gravatar($email, 70);
+}
 function get_role($roleNum){
 	$db = PDOFactory::getConnection();
 	$stmt = $db->prepare('SELECT value FROM role where id = ?');
@@ -24,9 +33,20 @@ function get_users($community){
 	$db = PDOFactory::getConnection();
 	$stmt = $db->prepare('SELECT c.name, c.email, b.group_role_id FROM community a 
 							LEFT JOIN community_user_list b ON a.id = b.community_id 
-							LEFT JOIN user c ON c.id = b.user_id WHERE a.name = ? ORDER BY b.group_role_id DESC;');
+							LEFT JOIN user c ON c.id = b.user_id WHERE a.name = ? ORDER BY b.group_role_id DESC limit 50;');
 	$stmt->execute([$community]);
 	return $stmt->fetchAll();
+}
+function is_community_user($community, $user){
+    $db = PDOFactory::getConnection();
+    $stmt = $db->prepare('SELECT * FROM community_user_list WHERE user_id = ? AND community_id = ?');
+    $stmt->execute([$user, $community]);
+    $help = $stmt->fetch();
+    if($stmt->rowCount() > 0 ){
+
+        return true;
+    }
+    return false;
 }
 function formatPosts($posts){
 	$return = '';
@@ -36,9 +56,11 @@ function formatPosts($posts){
             $return .= 'event-post';
         $return .= '">
             <div class="poster-info">
-                <img class="poster-image" src="'. get_gravatar($post['email']) .'" />
-                <a href="/groups/group.php?name='. $post['group_name'] .'" class="post-location">'. $post["group_name"] .'</a>
+                <img class="poster-image" src="'. get_gravatar($post['email'], 40) .'" />
+                <div class="names">
                 <a href="/users/user.php?name='. $post['name'] .'" class="poster-name">'. $post["name"] .'</a>
+                <a href="/groups/group.php?name='. $post['group_name'] .'" class="post-location">'. $post["group_name"] .'</a>
+                </div>
             </div>
             <div class="clear"></div>';
         if ($post["type"] == 2)
@@ -49,4 +71,19 @@ function formatPosts($posts){
         </div>';
     }
     return $return;
+}
+function clean($input){
+	$input = trim($input);
+	$input = stripslashes($input);
+	$input = htmlspecialchars($input);
+	if($input === ""){
+		header('Location: register.php?error=Empty Fields');
+	}
+	return $input;
+}
+function checkCheckbox($val){
+	if(isset($_POST[$val])){
+		return $_POST[$val] === "TRUE";
+	}
+	return false;
 }
