@@ -87,3 +87,7 @@ function checkCheckbox($val){
 	}
 	return false;
 }
+function isEmailValid($email){
+    $preg = '/.*\@.*\..*/';
+    return preg_match($preg, $email);
+}
