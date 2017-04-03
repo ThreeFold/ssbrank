@@ -25,7 +25,7 @@
     if(is_community_user($info['id'], $_SESSION['user_id'])){
         echo '<span><input type="button" class="leave" id="join-button" onClick="join()" value="Leave Group"></span>';
     }
-    else echo '<span><input type="button" id="join-button" onClick="join()" value="Join Group"></span>';
+    else echo '<span><a href="#" id="join-button" onClick="join()" value="Join Group"></a></span>';
     echo '<div class="header" style="background-image:url(' . $info['header_image'] . ')"></div>';
     echo '<p>' . $info['description'] . '</p>';
     echo '<h4>Members</h4>';
@@ -49,8 +49,9 @@
                 <a href="/groups/group.php?name=" class="post-location"></a>
                 <a href="/users/user.php?name=" class="poster-name"></a>
             </div>
-        <form action="post.php">
+        <form id="postform">
             <textarea class="post-text" name="post-text" rows="4" placeholder="What's up?"></textarea>
+            <input type="submit">
         </form>
     </div>
     <?php
@@ -65,6 +66,28 @@
 	$path .= "/footer.php";
 ?>
 <script>
+    $('#postform').submit(function(event){
+        event.preventDefault();
+        var postinfo = $('#postform').serializeArray();
+        console.log(postinfo);
+        $.ajax({
+            type:'POST',
+            url: 'groupActions.php',
+            data: {
+                action: 'new_post',
+                post_text: postinfo[0]['value'],
+                group_name: '<?php echo $info['name']; ?>'
+            },
+            dataType: 'Text',
+            success: function(response){
+                console.log(response);
+            },
+            error: function(response){
+                alert("Error posting post: " + response);
+            }
+
+        });
+    });
     function join(){
         $('#join-button').prop('disabled', true);
         if($('#join-button').hasClass('leave')){
