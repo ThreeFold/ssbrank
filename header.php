@@ -3,13 +3,13 @@
     $path = $_SERVER['DOCUMENT_ROOT'];
     include_once('PDOFactory.php');
     include_once('library.php');
-    include_once($path . 'classes/user.php');
-    include_once($path . 'classes/tournament.php');
+    include_once($path . '/classes/user.php');
+    include_once($path . '/classes/tournament.php');
     
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     } 
-    echo isset($_SESSION['user_id']);
+    echo isset($_SESSION);
     $user = User::onlyID($_SESSION['user_id']);
     if(empty((array)$user)){
         header('Location:/landing.php');
