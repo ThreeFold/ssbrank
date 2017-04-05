@@ -1,3 +1,21 @@
+<?php 
+    
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    include_once('PDOFactory.php');
+    include_once('library.php');
+    include_once($path . 'classes/user.php');
+    include_once($path . 'classes/tournament.php');
+    
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    } 
+    echo isset($_SESSION['user_id']);
+    $user = User::onlyID($_SESSION['user_id']);
+    if(empty((array)$user)){
+        header('Location:/landing.php');
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,22 +28,7 @@
 <body>
     <div id="main-nav">
         <div id="user-block">
-<?php 
-    
-    include_once('PDOFactory.php');
-    include_once('library.php');
-    include_once('/classes/user.php');
-    include_once('/classes/tournament.php');
-    
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    } 
-    $user = User::onlyID($_SESSION['user_id']);
-    if(empty((array)$user)){
-        header('Location:/landing.php');
-    }
 
-?>
         <div class="user-image">
             <a href="<?php echo $user->getProfileLink() ?>"><img src="<?php echo $user->getProfileImage(100); ?>" /></a>
         </div>
