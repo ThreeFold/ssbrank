@@ -10,9 +10,11 @@ TODO:
 	* Pages to create
 		- [ ] Community
 			- [ ] Admin Pages
-			- [ ] List of Communities
-			- [ ] Group Page
+			- [x] List of Communities
+			- [x] Group Page
 			- [x] All Group Posts
+			- [ ] Posts
+				- [ ] Indicate post successful
 		- [ ] Tourneys
 			- [ ] Event Page
 			- [ ] Upcoming Tournaments

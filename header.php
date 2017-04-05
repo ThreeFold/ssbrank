@@ -14,7 +14,8 @@
     
     include_once('PDOFactory.php');
     include_once('library.php');
-    include_once('classes.php');
+    include_once('/classes/user.php');
+    include_once('/classes/tournament.php');
     
     if (session_status() == PHP_SESSION_NONE) {
         session_start();

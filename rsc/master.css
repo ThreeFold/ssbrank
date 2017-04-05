@@ -141,6 +141,48 @@ hr {
     height:320px;
     background-size:cover;
 }
+.tournament-box{
+    background-color: white;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 0px 1px #050401;
+    padding:6px;
+    max-height:300px;
+  overflow: hidden;
+}
+.tournament-box .tourney-image {
+    background-image:url('/rsc/images/group-default.png');
+    background-position:center center;
+    background-repeat:no-repeat;
+    width:200px;
+    height:100px;
+    display:inline-block;
+    background-size:cover;
+}
+.tournament-box a {
+  color:#800e13;
+  font-size:32pt;
+    display:inline-block;
+    vertical-align: top;
+}
+.tournament-box a>span {
+  display:block;
+  color:#999;
+  font-size:10pt;
+}
+.tournament-box a:hover{
+    text-decoration: underline;
+}
+.tournament-box .games {
+    float:right;
+}.tournament-box .games .game-icon {
+    width:50px;
+    height:50px;
+}
+.tournament-box .description{
+    margin:0;
+    vertical-align: top;
+}
 .post > .poster-info {
   clear:both;
 }

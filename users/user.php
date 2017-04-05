@@ -17,14 +17,16 @@
 
 <?php 
 if($user === null){
+	//TODO: Redirect to 404 page
 	echo '<h1 style="color:white">User ' . clean($_GET['name']) . ' not Found</h1>';
 }
 else{
 
 	echo '<h1>' . $user->getName() . '</h1>';
 	echo $user->getProfileLink();
-	}
-	 ?>
+    echo print_r($user->getGames(),true);
+}
+?>
 
 </div>
 
