@@ -25,7 +25,7 @@
     if(is_community_user($info['id'], $_SESSION['user_id'])){
         echo '<span><input type="button" class="leave" id="join-button" onClick="join()" value="Leave Group"></span>';
     }
-    else echo '<span><a href="#" id="join-button" onClick="join()" value="Join Group"></a></span>';
+    else echo '<span><input type="button" id="join-button" onClick="join()" value="Join Group"></span>';
     echo '<div class="header" style="background-image:url(' . $info['header_image'] . ')"></div>';
     echo '<p>' . $info['description'] . '</p>';
     echo '<h4>Members</h4>';

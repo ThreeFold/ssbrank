@@ -8,6 +8,7 @@
     if(!password_verify($_POST['password'],$user['password'])){
     	header('Location: login.php?error=Issue with login, account not found or password not valid');
     }
-    echo $user['id'];
-    $_SESSION['user_id'] = $user['id'];
-    header('Location: index.php');
+    else{
+        $_SESSION['user_id'] = $user['id'];
+        header('Location: index.php');
+    }

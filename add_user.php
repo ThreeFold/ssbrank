@@ -26,7 +26,7 @@ if($email === "" or $username === "" or $password === "" or $check === ""){
 if($password !== $check){
 	header('Location: register.php?error=Passwords don\'t match');
 }
-if(!preg_match('/([a-zA-Z_])\w{3-15}/'),$username){
+if(!preg_match('/([a-zA-Z_])\w{3-15}/',$username)){
 
 	header('Location: register.php?error=Your username can only contain Alphanumerics and Underscores, and be between 3 and 15 characters');
 }
@@ -39,7 +39,7 @@ $db = PDOFactory::getConnection();
 $stmt = $db->prepare('INSERT INTO user (id, name,  location, password, email, role, melee, n64, sm4sh, brawl, roa, pm)
 	VALUES (:id, :username, :location, :password, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm)');
 
-$password = password_hash($password, PASSWORD_BCRYPT);
+$password = password_hash($password, PASSWORD_DEFAULT);
 $stmt->bindParam(':id', $user_id, PDO::PARAM_STR, 23);
 $stmt->bindParam(':username', $username, PDO::PARAM_STR, 32);
 $stmt->bindParam(':password', $password , PDO::PARAM_STR, 256);
