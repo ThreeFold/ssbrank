@@ -26,7 +26,7 @@ else if($email === "" or $username === "" or $password === "" or $check === ""){
 else if($password !== $check){
 	header('Location: register.php?error=Passwords don\'t match');
 }
-else if(!preg_match('/([a-zA-Z_])\w{3-15}/',$username)){
+else if(!preg_match('/^([a-zA-Z_]{3,15})/',$username)){
 
 	header('Location: register.php?error=Your username can only contain Alphanumerics and Underscores, and be between 3 and 15 characters');
 }
