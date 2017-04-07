@@ -12,6 +12,7 @@ class User{
 	private $brawl;
 	private $roa;
 	private $pm;
+	private $password;
 	private $profile_image;
 
 	public function __construct(){
@@ -40,10 +41,35 @@ class User{
 
 		return null;
 	}
+	public static function createNewUser($username, $email, $password, $location, $n64, $ssbm, $ssbb, $ssbpm, $roa, $ssb4, $role){
+		$db = PDOFactory::getConnection();
+
+		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, email, role, melee, n64, sm4sh, brawl, roa, pm)
+			VALUES (:id, :username, :location, :password, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm)');
+		$user_id = uniqid('', true);
+		$stmt->bindParam(':id', $user_id, PDO::PARAM_STR, 23);
+		$stmt->bindParam(':username', $username, PDO::PARAM_STR, 32);
+		$stmt->bindParam(':password', $password , PDO::PARAM_STR, 256);
+		$stmt->bindParam(':location', $location, PDO::PARAM_STR, 100);
+		$stmt->bindParam(':email', $email, PDO::PARAM_STR, 254);
+		$stmt->bindParam(':role', $role, PDO::PARAM_INT, 11);
+		$stmt->bindParam(':melee', $ssbm, PDO::PARAM_BOOL);
+		$stmt->bindParam(':n64', $n64, PDO::PARAM_BOOL);
+		$stmt->bindParam(':sm4sh', $ssb4, PDO::PARAM_BOOL);
+		$stmt->bindParam(':brawl', $ssbb, PDO::PARAM_BOOL);
+		$stmt->bindParam(':roa', $roa, PDO::PARAM_BOOL);
+		$stmt->bindParam(':pm', $ssbpm, PDO::PARAM_BOOL);
+		$stmt->execute();
+		return User::onlyName($username);
+	}
 	public function getID(){
 		return $this->id;
 	}
 	public function getName(){
+		return $this->name;
+	}
+	public function setPassword($password, $old_password, $check){
+		if(password_verify($old_password,$this->password))
 		return $this->name;
 	}
 	public function setName($name){
