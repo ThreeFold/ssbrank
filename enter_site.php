@@ -1,5 +1,6 @@
 <?php
 	session_start();
+    
 	include_once('PDOFactory.php');
     $db = PDOFactory::getConnection();
     $stmt = $db->prepare('SELECT * from user where name = ? or email = ?');
