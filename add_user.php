@@ -26,8 +26,13 @@ if($email === "" or $username === "" or $password === "" or $check === ""){
 if($password !== $check){
 	header('Location: register.php?error=Passwords don\'t match');
 }
-if(strlen($password) >= 8){
-	header('location: register.php?error=Password is not long enough');
+if(!preg_match('/([a-zA-Z_])\w{3-15}/'),$username){
+
+	header('Location: register.php?error=Your username can only contain Alphanumerics and Underscores, and be between 3 and 15 characters');
+}
+if(strlen($password) < 8 ){
+
+	header('Location: register.php?error=Password is not long enough');
 }
 $db = PDOFactory::getConnection();
 
@@ -49,6 +54,6 @@ $stmt->bindParam(':roa', $roa, PDO::PARAM_BOOL);
 $stmt->bindParam(':pm', $ssbpm, PDO::PARAM_BOOL);
 $stmt->execute();
 
-echo mkdir('/users/'.$user_id.'/', 0777, true);
+#echo mkdir('/users/'.$user_id.'/', 0777, true);
 $_SESSION['user_id'] = $user_id;
 header('Location: index.php');

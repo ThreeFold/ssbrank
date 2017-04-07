@@ -31,6 +31,16 @@ class Tournament{
 		return $tourneys;
 
 	}
+	public static function getAllPastTournaments(){
+		$db = PDOFactory::getConnection();
+		$today = date("Y-m-d");
+		$stmt = $db->prepare('SELECT * FROM tournament WHERE DATE(startdate) <= ? ORDER BY startdate DESC');
+		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Tournament');
+		$stmt->execute([$today]);
+		$tourneys = $stmt->fetchAll();
+		return $tourneys;
+
+	}
 	public function getID(){
 		return $this->id;
 	}

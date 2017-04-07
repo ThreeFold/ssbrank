@@ -71,7 +71,7 @@ class User{
 		return array("Smash 64"=>$this->n64, "SSBM"=>$this->melee, "SSBB"=>$this->brawl, "SSBPM"=>$this->pm, "SSB4"=>$this->sm4sh, "RoA"=>$this->roa);
 	}
 	public function getProfileLink(){
-		return '/users/user?name=' . $this->name ;
+		return '/users/user.php?name=' . $this->name ;
 	}
 
 	public function getGroups(){
