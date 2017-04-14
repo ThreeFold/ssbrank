@@ -38,7 +38,6 @@ else{
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	$user = User::createNewUser($username, $email, $password, $location, $n64, $ssbm, $ssbb, $ssbpm, $roa, $ssb4, $role);
 
-	#echo mkdir('/users/'.$user_id.'/', 0777, true);
 	$_SESSION['user_id'] = $user->getID();
 	header('Location: index.php');
 }

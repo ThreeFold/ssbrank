@@ -5,6 +5,8 @@ class Tournament{
 	private $startdate;
 	private $description;
 	private $main_image;
+	private $fb_link;
+	private $smashgg_link;
 
 	public function __construct(){
 	}
@@ -14,12 +16,27 @@ class Tournament{
 		$stmt->execute([$name]);
 		return $stmt->fetch();
 	}
-	public static function newTournament($name, $startdate, $description, $main_image){
-		$this->id = uniqid('', true);
-		$this->name = $name;
-		$this->startdate = $startdate;
-		$this->description = $description;
-		$this->main_image = $main_image;
+	public static function newTournament($name, $startdate, $description, $main_image, $fb_link, $smashgg_link, $user){
+		$tourney = new Tournament();
+		$tourney->id = uniqid('', true);
+		$tourney->name = $name;
+		$tourney->startdate = $startdate;
+		$tourney->description = $description;
+		$tourney->main_image = $main_image;
+		$tourney->fb_link = $fb_link;
+		$tourney->smashgg_link = $smashgg_link;
+		$db = PDOFactory::getConnection();
+		$stmt = $db->prepare('INSERT INTO tournament (id, name, startdate, description, main_image, fb_link, smashgg_link) VALUES (?,?,?,?,?,?,?');
+		$stmt->execute([$tourney->id, $tourney->name, $tourney->startdate, $tourney->description, $tourney->main_image, $tourney->fb_link, $tourney->smashgg_link]);
+
+		$to = $db->prepare('INSERT INTO tournament_organizers (user_id, touranment_id, title) VALUES(?,?,?)');
+		$to->execute([$user, $tourney->id, 'Head Organizer']);
+	}
+	public function saveTournament(){
+		$db = PDOFactory::getConnection();
+		$stmt = $db->prepare('UPDATE tournament SET name = ?, startdate = ?, description = ?, main_image = ?, fb_link = ?, smashgg_link = ? WHERE id = ?');
+		$stmt->execute([$this->name, $this->startdate, $this->description, $this->main_image, $this->fb_link, $this->smashgg_link, $this->id]);
+		
 	}
 	public static function getAllTournaments(){
 		$db = PDOFactory::getConnection();
@@ -29,7 +46,6 @@ class Tournament{
 		$stmt->execute([$today]);
 		$tourneys = $stmt->fetchAll();
 		return $tourneys;
-
 	}
 	public static function getAllPastTournaments(){
 		$db = PDOFactory::getConnection();

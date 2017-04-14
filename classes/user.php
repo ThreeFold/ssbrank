@@ -5,6 +5,7 @@ class User{
 	private $location;
 	private $date_joined;
 	private $email;
+	private $team;
 	private $role;
 	private $melee;
 	private $n64;
@@ -44,12 +45,13 @@ class User{
 	public static function createNewUser($username, $email, $password, $location, $n64, $ssbm, $ssbb, $ssbpm, $roa, $ssb4, $role){
 		$db = PDOFactory::getConnection();
 
-		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, email, role, melee, n64, sm4sh, brawl, roa, pm)
-			VALUES (:id, :username, :location, :password, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm)');
+		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, team, email, role, melee, n64, sm4sh, brawl, roa, pm)
+			VALUES (:id, :username, :location, :password, :team, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm)');
 		$user_id = uniqid('', true);
 		$stmt->bindParam(':id', $user_id, PDO::PARAM_STR, 23);
 		$stmt->bindParam(':username', $username, PDO::PARAM_STR, 32);
 		$stmt->bindParam(':password', $password , PDO::PARAM_STR, 256);
+		$stmt->bindParam(':team', $team , PDO::PARAM_STR, 256);
 		$stmt->bindParam(':location', $location, PDO::PARAM_STR, 100);
 		$stmt->bindParam(':email', $email, PDO::PARAM_STR, 254);
 		$stmt->bindParam(':role', $role, PDO::PARAM_INT, 11);
@@ -60,6 +62,7 @@ class User{
 		$stmt->bindParam(':roa', $roa, PDO::PARAM_BOOL);
 		$stmt->bindParam(':pm', $ssbpm, PDO::PARAM_BOOL);
 		$stmt->execute();
+		mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/'.$this->id.'/', 0777, true);
 		return User::onlyName($username);
 	}
 	public function getID(){
@@ -68,9 +71,11 @@ class User{
 	public function getName(){
 		return $this->name;
 	}
-	public function setPassword($password, $old_password, $check){
-		if(password_verify($old_password,$this->password))
-		return $this->name;
+	public function setPassword($old_password, $password, $check){
+		if(!password_verify($old_password,$this->password)){
+			throw new ErrorException('Old Password Not accepted');
+		}
+
 	}
 	public function setName($name){
 		$this->name = $name;
@@ -90,14 +95,44 @@ class User{
 	public function setEmail($email){
 		$this->email = $email;
 	}
+	public function getTeam(){
+		return $this->team;
+	}
+	public function setTeam($team){
+		$this->team = $team;
+	}
 	public function getRole(){
 		return $this->role;
 	}
 	public function getGames(){
-		return array("Smash 64"=>$this->n64, "SSBM"=>$this->melee, "SSBB"=>$this->brawl, "SSBPM"=>$this->pm, "SSB4"=>$this->sm4sh, "RoA"=>$this->roa);
+		return array("ssb"=>$this->n64, "ssbm"=>$this->melee, "ssbb"=>$this->brawl, "pm"=>$this->pm, "sm4sh"=>$this->sm4sh, "RoA"=>$this->roa);
+	}
+	public function setGames($games){
+		foreach($games as $game => $value){ //allows me to grab the key and if set at all, it enters
+			switch ($game){
+				case 'n64':
+				$this->n64 = true;
+				break;
+				case 'ssbm':
+				$this->melee = true;
+				break;
+				case 'ssbb':
+				$this->brawl = true;
+				break;
+				case 'pm':
+				$this->pm = true;
+				break;
+				case 'sm4sh':
+				$this->sm4sh = true;
+				break;
+				case 'RoA':
+				$this->RoA = true;
+				break;
+			}
+		}
 	}
 	public function getProfileLink(){
-		return '/users/user.php?name=' . $this->name ;
+		return '/users/user.php?name=' . $this->name;
 	}
 
 	public function getGroups(){

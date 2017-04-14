@@ -54,17 +54,13 @@
             <input type="submit">
         </form>
     </div>
+    <div id="posts">
     <?php
     $posts = PDOFactory::getGroupPosts($_GET['name']);
     echo formatPosts($posts);
     ?>
     </div>
-
-<?php
-
-	$path = $_SERVER['DOCUMENT_ROOT'];
-	$path .= "/footer.php";
-?>
+    </div>
 <script>
     $('#postform').submit(function(event){
         event.preventDefault();
@@ -81,6 +77,8 @@
             dataType: 'Text',
             success: function(response){
                 console.log(response);
+                $('#postform')[0].reset();
+                $('#posts');
             },
             error: function(response){
                 alert("Error posting post: " + response);
@@ -135,10 +133,9 @@
         }
         $('#join-button').prop('disabled', false);
     }
-    $(document).ajaxStop(function() {
-      console.log('call ended');
-    });
 </script>
 <?php
+    $path = $_SERVER['DOCUMENT_ROOT'];
+    $path .= "/footer.php";
 	include_once($path);
 ?>

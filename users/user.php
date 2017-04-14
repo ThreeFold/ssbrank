@@ -13,7 +13,7 @@
     $user = User::onlyName(clean($_GET['name']));
 
 ?>
-<div class="content">
+<div class="content" id="user-content">
 
 <?php 
 if($user === null){
@@ -22,9 +22,7 @@ if($user === null){
 }
 else{
 
-	echo '<h1>' . $user->getName() . '</h1>';
-	echo $user->getProfileLink();
-    echo print_r($user->getGames(),true);
+	echo '<img src="' . $user->getProfileImage(200) . '"><h1>' . $user->getName() . '</h1>';
 }
 ?>
 
