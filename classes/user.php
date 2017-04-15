@@ -65,8 +65,29 @@ class User{
 		mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/'.$this->id.'/', 0777, true);
 		return User::onlyName($username);
 	}
+
+	public function saveSettings(){
+		$db = PDOFactory::getConnection();
+
+		$stmt = $db->prepare('UPDATE user SET name = :username, team = :team, location = :location, email = :email, melee = :melee, n64 = :n64, sm4sh = :sm4sh, brawl = :brawl, roa = :roa, pm = :pm WHERE id = :id ');
+		$stmt->bindParam(':id', $this->id, PDO::PARAM_STR, 23);
+		$stmt->bindParam(':username', $this->name, PDO::PARAM_STR, 32);
+		$stmt->bindParam(':team', $this->team , PDO::PARAM_STR, 256);
+		$stmt->bindParam(':location', $this->location, PDO::PARAM_STR, 100);
+		$stmt->bindParam(':email', $this->email, PDO::PARAM_STR, 254);
+		$stmt->bindParam(':melee', $this->melee, PDO::PARAM_BOOL);
+		$stmt->bindParam(':n64', $this->n64, PDO::PARAM_BOOL);
+		$stmt->bindParam(':sm4sh', $this->sm4sh, PDO::PARAM_BOOL);
+		$stmt->bindParam(':brawl', $this->brawl, PDO::PARAM_BOOL);
+		$stmt->bindParam(':roa', $this->roa, PDO::PARAM_BOOL);
+		$stmt->bindParam(':pm', $this->pm, PDO::PARAM_BOOL);
+		$stmt->execute();
+	}
 	public function getID(){
 		return $this->id;
+	}
+	public function getDisplayName(){
+		return $this->team . ' | ' . $this->name;
 	}
 	public function getName(){
 		return $this->name;
@@ -105,31 +126,18 @@ class User{
 		return $this->role;
 	}
 	public function getGames(){
-		return array("ssb"=>$this->n64, "ssbm"=>$this->melee, "ssbb"=>$this->brawl, "pm"=>$this->pm, "sm4sh"=>$this->sm4sh, "RoA"=>$this->roa);
+		return array("n64"=>$this->n64, "ssbm"=>$this->melee, "ssbb"=>$this->brawl, "pm"=>$this->pm, "sm4sh"=>$this->sm4sh, "RoA"=>$this->roa);
 	}
 	public function setGames($games){
-		foreach($games as $game => $value){ //allows me to grab the key and if set at all, it enters
-			switch ($game){
-				case 'n64':
-				$this->n64 = true;
-				break;
-				case 'ssbm':
-				$this->melee = true;
-				break;
-				case 'ssbb':
-				$this->brawl = true;
-				break;
-				case 'pm':
-				$this->pm = true;
-				break;
-				case 'sm4sh':
-				$this->sm4sh = true;
-				break;
-				case 'RoA':
-				$this->RoA = true;
-				break;
-			}
-		}
+		$this->n64   = in_array('n64', $games) ? true : false;
+		$this->melee = in_array('ssbm', $games) ? true : false;
+		$this->brawl = in_array('ssbb', $games) ? true : false;
+		$this->pm    = in_array('pm', $games) ? true : false;
+		$this->sm4sh = in_array('sm4sh', $games) ? true : false;
+		$this->roa   = in_array('RoA', $games) ? true : false;
+	}
+	private function toggleGame($game){
+
 	}
 	public function getProfileLink(){
 		return '/users/user.php?name=' . $this->name;

@@ -36,7 +36,7 @@ hr {
 #user-block {
     width: 15%;
     position: fixed;
-    height: 200px;
+    height: 100px;
     top: 0;
     left: 0;
     color: white;
@@ -45,8 +45,8 @@ hr {
 }
 
 .user-image {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
     padding: 0;
     float:left;
@@ -64,7 +64,7 @@ hr {
 #navbar {
     position: fixed;
     left: 0;
-    top: 200px;
+    top: 100px;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -72,7 +72,7 @@ hr {
     font-size: 15pt;
     min-width: 100px;
     width: 15%;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 100px);
 }
 
 #navbar > li {
@@ -314,4 +314,13 @@ textarea.post-text {
 }
 .game-box:checked + .game-label>img {
     background-color:#27FB6B;
+}
+.landing-submit{
+    width:100px;
+    padding: 5px 10px;
+    display:block;
+    margin: 5px;
+    background-color:#036D19;
+    border:none;
+    color:#27FB6B;
 }

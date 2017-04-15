@@ -51,7 +51,7 @@
             </div>
         <form id="postform">
             <textarea class="post-text" name="post-text" rows="4" placeholder="What's up?"></textarea>
-            <input type="submit">
+            <input type="submit"><!--need to style-->
         </form>
     </div>
     <div id="posts">
@@ -82,6 +82,7 @@
             },
             error: function(response){
                 alert("Error posting post: " + response);
+                
             }
 
         });

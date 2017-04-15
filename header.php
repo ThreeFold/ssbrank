@@ -30,11 +30,11 @@
         <div id="user-block">
 
         <div class="user-image">
-            <a href="<?php echo $user->getProfileLink() ?>"><img src="<?php echo $user->getProfileImage(100); ?>" /></a>
+            <a href="<?php echo $user->getProfileLink() ?>"><img src="<?php echo $user->getProfileImage(60); ?>" /></a>
         </div>
         <?php
         echo    '<p id="username">
-                    <a href="' . $user->getProfileLink() . '">' . $user->getName() . 
+                    <a href="' . $user->getProfileLink() . '">' . $user->getDisplayName() . 
                     '</a><span class="role">' . get_role($user->getRole()) . '</span></p>';
         ?>
         <a class="settings-icon" href="/users/settings.php"><img src="/rsc/images/gear.png"></a>
