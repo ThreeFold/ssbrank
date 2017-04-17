@@ -9,7 +9,6 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     } 
-    echo isset($_SESSION);
     $user = User::onlyID($_SESSION['user_id']);
     if(empty((array)$user)){
         header('Location:/landing.php');
@@ -30,11 +29,11 @@
         <div id="user-block">
 
         <div class="user-image">
-            <a href="<?php echo $user->getProfileLink() ?>"><img src="<?php echo $user->getProfileImage(100); ?>" /></a>
+            <a href="<?php echo $user->getProfileLink() ?>"><img src="<?php echo $user->getProfileImage(60); ?>" /></a>
         </div>
         <?php
         echo    '<p id="username">
-                    <a href="' . $user->getProfileLink() . '">' . $user->getName() . 
+                    <a href="' . $user->getProfileLink() . '">' . $user->getDisplayName() . 
                     '</a><span class="role">' . get_role($user->getRole()) . '</span></p>';
         ?>
         <a class="settings-icon" href="/users/settings.php"><img src="/rsc/images/gear.png"></a>

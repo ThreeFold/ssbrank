@@ -7,6 +7,7 @@ body {
     margin: 0;
     font-family: sans-serif;
     background-color:#111;
+    color:white;
 }
 
 a {
@@ -36,7 +37,7 @@ hr {
 #user-block {
     width: 15%;
     position: fixed;
-    height: 200px;
+    height: 100px;
     top: 0;
     left: 0;
     color: white;
@@ -45,8 +46,8 @@ hr {
 }
 
 .user-image {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     overflow: hidden;
     padding: 0;
     float:left;
@@ -64,7 +65,7 @@ hr {
 #navbar {
     position: fixed;
     left: 0;
-    top: 200px;
+    top: 100px;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -72,7 +73,7 @@ hr {
     font-size: 15pt;
     min-width: 100px;
     width: 15%;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 100px);
 }
 
 #navbar > li {
@@ -122,6 +123,7 @@ hr {
 }
 
 .post {
+    color:black;
     background-color: white;
     border-radius: 3px;
     margin-bottom: 5px;
@@ -285,6 +287,10 @@ hr {
     margin-bottom: 5px;
     box-shadow: 0px 0px 0px 1px #050401;
 }
+textarea {
+    font-family:sans-serif;
+    width:100%;
+}
 textarea.post-text {
     font-family:sans-serif;
     width:inherit;
@@ -292,4 +298,38 @@ textarea.post-text {
     width:100%;
     box-sizing: border-box;
     resize: vertical;
+}
+#user-content{
+    color:white;
+}
+.textedit, .user-textedit{
+    display:block;
+    border:none;
+    background-color:#222;
+    color:white;
+    font-size:20pt;
+    margin-bottom:7px;
+    padding:6px;
+}
+.textedit{
+    font-size:14pt;
+}
+.game-box {
+    display:none;
+}
+.game-label>img {
+    width:50px;
+    height:50px;
+}
+.game-box:checked + .game-label>img {
+    background-color:#27FB6B;
+}
+.landing-submit{
+    width:100px;
+    padding: 5px 10px;
+    display:block;
+    margin: 5px;
+    background-color:#036D19;
+    border:none;
+    color:#27FB6B;
 }
