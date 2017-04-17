@@ -43,8 +43,7 @@
     </form>
     <form>
     <h2>Update User Image</h2>
-    <p>You can change your profile image here, make sure to use the same email for this stie
-    <a href="http://en.gravatar.com">Profile Images managed on Gravatar</a>
+    <p>You can change your profile image <a href="http://en.gravatar.com">here</a>, make sure to use the same email for this site</p>
     </form>
     <div id="links">
     <h2 >Linked Accounts <span>TODO</span></h2>

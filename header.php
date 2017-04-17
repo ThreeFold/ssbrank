@@ -9,7 +9,6 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     } 
-    echo isset($_SESSION);
     $user = User::onlyID($_SESSION['user_id']);
     if(empty((array)$user)){
         header('Location:/landing.php');

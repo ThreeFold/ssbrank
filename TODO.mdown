@@ -2,7 +2,7 @@
 
 I have a lot of ideas and need to put them down.
 
-So for now, I neeed to organize the things to be down:
+So for now, I neeed to organize the things to be done:
 
 TODO:
 
@@ -10,17 +10,33 @@ TODO:
 	* Pages to create
 		- [ ] Community
 			- [ ] Admin Pages
+			- [ ] Create Group
+				- [ ] Verification process
 			- [x] List of Communities
 			- [x] Group Page
 			- [x] All Group Posts
-			- [ ] Posts
+			- [x] Posts
 				- [ ] Indicate post successful
 		- [ ] Tourneys
 			- [ ] Event Page
-			- [ ] Upcoming Tournaments
-			- [ ] 
+				- [ ] Bracket locations
+				- [ ] Joiend Users
+				- [ ] Bracket importing
+			- [ ] Admin Page
+			- [x] Upcoming Tournaments
+			- [x] Previous Tournaments
+			- [x] Create Tourney
+				- [ ] Verification process
 		- [ ] User Page
 			- [ ] 'Profile' Page
 			- [ ] Settings
+				- [x] Games
+				- [x] Username
+				- [x] Team
+				- [ ] Region
+				- [ ] Password
+				- [ ] Mains 
+					- [ ] Sprite sheet for each game
+			- [ ] Administration pages
 		- [ ] Ranks (On the back burner until further notice) 
 
