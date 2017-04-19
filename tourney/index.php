@@ -11,7 +11,7 @@ $curTourneys = Tournament::getAllTournaments();
 
 foreach($curTourneys as $tourney){
 	echo   '<div class="tournament-box" >
-			<div class="tourney-image"></div>
+			<div class="tourney-image" style="background-image:url(' . $tourney->getMainImage() . '"></div>
 			<div class="games" style="float:right">';
 	foreach($tourney->getGames() as $game){
 		echo '<img src="/rsc/icons/' . $game . '.png" class="game-icon">';

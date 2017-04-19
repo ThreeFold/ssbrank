@@ -1,5 +1,6 @@
 <?php
 include_once('PDOFactory.php');
+require 'vendor/autoload.php';
 function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
     $url = 'https://www.gravatar.com/avatar/';
     $url .= md5( strtolower( trim( $email ) ) );
@@ -50,6 +51,7 @@ function is_community_user($community, $user){
 }
 function formatPosts($posts){
 	$return = '';
+    $Parsedown = new Parsedown();
 	foreach($posts as $post){
         $return .= '<div class="post ';
         if ($post["type"] == 2)
@@ -65,7 +67,7 @@ function formatPosts($posts){
             <div class="clear"></div>';
         if ($post["type"] == 2)
             $return .= '<img src="'.$post["event-image"].'" class="event-image" />';
-        $return .= '<div class="text">' . $post["text"] . '</div>
+        $return .= '<div class="text">' . $Parsedown->text($post["text"]) . '</div>
             <hr/>
             <a href="" class="button comment">Comment</a>
         </div>';
