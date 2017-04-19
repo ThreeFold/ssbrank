@@ -45,8 +45,8 @@ class User{
 	public static function createNewUser($username, $email, $password, $location, $n64, $ssbm, $ssbb, $ssbpm, $roa, $ssb4, $role){
 		$db = PDOFactory::getConnection();
 
-		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, team, email, role, melee, n64, sm4sh, brawl, roa, pm)
-			VALUES (:id, :username, :location, :password, :team, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm)');
+		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, team, email, role, melee, n64, sm4sh, brawl, roa, pm, hash)
+			VALUES (:id, :username, :location, :password, :team, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm, MD5(FLOOR(RAND()*1000)))');
 		$user_id = uniqid('', true);
 		$stmt->bindParam(':id', $user_id, PDO::PARAM_STR, 23);
 		$stmt->bindParam(':username', $username, PDO::PARAM_STR, 32);

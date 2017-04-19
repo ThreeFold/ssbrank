@@ -37,7 +37,7 @@ hr {
 #user-block {
     width: 15%;
     position: fixed;
-    height: 100px;
+    height: 125px;
     top: 0;
     left: 0;
     color: white;
@@ -58,6 +58,11 @@ hr {
     right: 10px;
     bottom:15px;
 }
+.logout-icon {
+    position:absolute;
+    left: 10px;
+    bottom:15px;
+}
 #main-nav {
     background-color: #050401;
 }
@@ -65,7 +70,7 @@ hr {
 #navbar {
     position: fixed;
     left: 0;
-    top: 100px;
+    top: 125px;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -73,27 +78,34 @@ hr {
     font-size: 15pt;
     min-width: 100px;
     width: 15%;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 125px);
 }
 
-#navbar > li {
+#navbar  li {
     text-align: center;
 }
-
-#navbar > li a {
+#navbar li a i {
+    font-size:15pt;
+}
+#navbar  li a {
     display: block;
-    color: #8ae1fc;
+    color: #F9DC5C;
     padding: 8px 0;
     text-decoration: none;
 }
 
-#navbar > li a:hover {
-    color: #050401;
-    background-color: #a9ffcb;
+#navbar  li a:hover {
+    color: #465362;
+    background-color: #F9DC5C;
 }
 
 .clear {
     clear: both;
+}
+#navbar .lower-bar {
+    position:absolute;
+    width:100%;
+    bottom:25px;
 }
 #top-nav {
 
@@ -233,18 +245,15 @@ hr {
     display:inline-block;
     background-color: inherit;
     padding: 10px;
-    border-radius:3px;
+    border-bottom-left-radius: 3px;
 }
 
 .button:hover {
-    text-decoration: underline;
-    background-color: #a9ffcb;
+    background-color: #F9DC5C;
 }
 .group-card {
-    background-color:#f1fffa;
     width: 30%;
     border-radius:4px;
-    box-shadow: 0px 0px 0px 1px grey;
     display:inline-block;
     text-align:center; 
     transition:.12s ease-in-out;
@@ -252,15 +261,20 @@ hr {
     margin:5px;
 }
 .group-card  .group-img{
-
+    background-color:#F4FFFD;
     background-position:center center;
     background-repeat:no-repeat;
     width:100%;
-    height:300px;
+    height:150px;
     background-size:cover;
 }
 .group-card:hover {
     transform: scale(1.01);
+}
+.group-img > div {
+    background-color: rgba(255,255,255,.75);
+    width: 100%;
+    font-size: 20px;
 }
 #join-button{
     width:100px;
@@ -332,4 +346,24 @@ textarea.post-text {
     background-color:#036D19;
     border:none;
     color:#27FB6B;
+}
+.button-add {
+    border: none;
+    display:inline-block;
+    padding: 10px;
+    border-radius:3px;
+    background-color:#F9DC5C;
+    font-size:14px;
+}
+
+.button-add:hover {
+    background-color: #465362;
+    color:#F9DC5C;
+}
+.material-icons {
+    font-size:inherit;
+}
+.button-add > i{
+
+    font-size:14px;
 }

@@ -62,6 +62,7 @@
     </div>
     </div>
 <script>
+//TODO: add a polling doo-dad to allow more application like experience?
     $('#postform').submit(function(event){
         event.preventDefault();
         var postinfo = $('#postform').serializeArray();

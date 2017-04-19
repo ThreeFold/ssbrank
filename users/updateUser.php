@@ -14,9 +14,10 @@ try{
 		$msg .= "<li>Team name must be between 0 and 4 characters<li>";
 	}
 	else{
+		if($_POST['team'] !== "")
 		$user->setTeam(clean($_POST['team']));
 	}
-	if($_POST['username'] !== "" and !preg_match('/^([a-zA-Z_]{3,15})/',$_POST['username'])){
+	if($_POST['username'] !== "" and !preg_match('/^([a-zA-Z0-9_]{3,15})/',$_POST['username'])){
 		$msg .= "<li>Username was not valid<li>";
 	}
 	else {

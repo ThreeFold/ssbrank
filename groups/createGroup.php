@@ -15,17 +15,21 @@
 
     }
 ?>
-    <div id="content">
-    <form id="new-group" method="POST">
-        <input type="text" class="textedit" name="name" placeholder="Group Name">
+    <?php
+        if(!empty($_SESSION['new_group_error'])){
+            show_error($_SESSION['new_group_error']);
+            $_SESSION['new_group_error'] = '';
+        }
+    ?>
+    <form id="new-group" action="newGroup.php" method="POST" enctype="multipart/form-data">
+        <input type="text" class="textedit" name="name" placeholder="Group Name" >
         <input type="text"  class="textedit" name="region" placeholder="Region">
         <textarea name="desc" class="textedit"  rows="4" placeholder="Description"></textarea>
         <label for="image">Group Image</label>
-        <input type="file" id="image" class="buttonedit" >
+        <input type="file" id="image" name="image" class="buttonedit" >
 
-        <input type="submit"><!--need to style-->
+        <input class="landing-submit" type="submit"><!--need to style-->
     </form>
-    </div>
 <?php
     $path = $_SERVER['DOCUMENT_ROOT'];
     $path .= "/footer.php";
