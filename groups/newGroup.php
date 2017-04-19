@@ -67,6 +67,6 @@ if(!empty($_SESSION['new_group_error']))
 if($uploadOk){
 	$group = Community::newGroup($id, $name, $desc, $region, $rel . basename($_FILES["image"]["name"]));
 	$group->addUser($_SESSION['user_id'], 5);
-	header('Location:/groups/group?name=' .$group->getName());
+	header('Location:/groups/group.php?name=' .$group->getName());
 }
 ?>
