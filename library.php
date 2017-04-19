@@ -88,3 +88,6 @@ function isEmailValid($email){
     $preg = '/.*\@.*\..*/';
     return preg_match($preg, $email);
 }
+function show_error($error){
+    echo '<div class="error-popup">' . $error . '</div>';
+}

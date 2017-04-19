@@ -22,6 +22,8 @@
 <title>Smash Rank</title>
     <link href="/rsc/master.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
@@ -36,12 +38,15 @@
                     <a href="' . $user->getProfileLink() . '">' . $user->getDisplayName() . 
                     '</a><span class="role">' . get_role($user->getRole()) . '</span></p>';
         ?>
-        <a class="settings-icon" href="/users/settings.php"><img src="/rsc/images/gear.png"></a>
         </div>
         <ul id="navbar">
             <li><a href="/index.php">Home</a></li>
             <li><a href="/groups/">Community</a></li>
             <li><a href="/ranking/">Ranks</a></li>
             <li><a href="/tourney/">Tourneys</a></li>
+            <div class="lower-bar">
+                <li><a href="/users/settings.php">Settings <i class="material-icons" >settings</i></a></li>
+                <li><a href="/landing.php">Logout <i class="material-icons" >exit_to_app</i></a>
+            </div>
         </ul>
     </div>
