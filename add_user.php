@@ -16,7 +16,7 @@ $ssbpm = checkCheckbox('pm');
 $roa = checkCheckbox('roa');
 $ssb4 = checkCheckbox('sm4sh');
 $role = 1;
-
+echo 'Hello';
 if(!isEmailValid($email)){
      header('Location: register.php?error=Please Enter a valid email ' . $email);
 }
