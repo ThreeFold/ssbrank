@@ -163,6 +163,7 @@ hr {
     padding:6px;
     max-height:300px;
   overflow: hidden;
+  color:black;
 }
 .tournament-box .tourney-image {
     background-image:url('/rsc/images/group-default.png');
