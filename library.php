@@ -68,8 +68,8 @@ function formatPosts($posts){
         if ($post["type"] == 2)
             $return .= '<img src="'.$post["event-image"].'" class="event-image" />';
         $return .= '<div class="text">' . $Parsedown->text($post["text"]) . '</div>
-            <hr/>
-            <a href="" class="button comment">Comment</a>
+            <!--<hr/>
+            <a href="" class="button comment">Comment</a>-->
         </div>';
     }
     return $return;
