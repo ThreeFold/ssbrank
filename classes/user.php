@@ -87,7 +87,7 @@ class User{
 	}
 	public function getDisplayName(){
 
-		return $this->team . $this->name;
+		return $this->team . ' ' . $this->name;
 	}
 	public function getName(){
 		return $this->name;
