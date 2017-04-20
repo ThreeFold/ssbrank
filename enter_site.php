@@ -7,6 +7,7 @@
     $stmt->execute([$_POST['email']]);
     $user = $stmt->fetch();
     if(!password_verify($_POST['password'],$user['password'])){
+        $_SESSION['login-error'] = ['email' => $_POST['email']];
     	header('Location: login.php?error=Issue with login, account not found or password not valid');
     }
     else{
