@@ -32,21 +32,20 @@ class User{
 	}
 	public static function onlyName($name){
 		$db = PDOFactory::getConnection();
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$stmt = $db->prepare('SELECT * FROM user WHERE name = ?');
 		$stmt->execute([$name]);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
 		$user = $stmt->fetch();
-		if($stmt->rowCount() > 0){
+		print_r($db->errorInfo());
 			return $user;
-		}
-
-		return null;
 	}
 	public static function createNewUser($username, $email, $password, $location, $n64, $ssbm, $ssbb, $ssbpm, $roa, $ssb4, $role){
 		$db = PDOFactory::getConnection();
 
-		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, team, email, role, melee, n64, sm4sh, brawl, roa, pm, hash)
-			VALUES (:id, :username, :location, :password, :team, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm, MD5(FLOOR(RAND()*1000)))');
+		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$stmt = $db->prepare('INSERT INTO user (id, name,  location, password, team, email, role, melee, n64, sm4sh, brawl, roa, pm, verified, hash)
+			VALUES (:id, :username, :location, :password, :team, :email, :role, :melee, :n64, :sm4sh, :brawl, :roa, :pm, 0,	 MD5(FLOOR(RAND()*1000)))');
 		$user_id = uniqid('', true);
 		$stmt->bindParam(':id', $user_id, PDO::PARAM_STR, 23);
 		$stmt->bindParam(':username', $username, PDO::PARAM_STR, 32);
@@ -62,8 +61,8 @@ class User{
 		$stmt->bindParam(':roa', $roa, PDO::PARAM_BOOL);
 		$stmt->bindParam(':pm', $ssbpm, PDO::PARAM_BOOL);
 		$stmt->execute();
-		mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/'.$this->id.'/', 0777, true);
-		return User::onlyName($username);
+		print_r($db->errorInfo());
+		return User::onlyID($user_id);
 	}
 
 	public function saveSettings(){
