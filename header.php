@@ -42,7 +42,7 @@
         <ul id="navbar">
             <li><a href="/index.php">Home</a></li>
             <li><a href="/groups/">Community</a></li>
-            <li><a href="/ranking/">Ranks</a></li>
+            <!--<li><a href="/ranking/">Ranks</a></li>-->
             <li><a href="/tourney/">Tourneys</a></li>
             <div class="lower-bar">
                 <li><a href="/users/settings.php">Settings <i class="material-icons" >settings</i></a></li>
